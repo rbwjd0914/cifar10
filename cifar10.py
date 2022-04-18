@@ -76,4 +76,4 @@ if __name__ == "__main__":
     print('Finished Training')
 
     # Save model
-    torch.save(net.state_dict(), "model.pt")
+    torch.save(net.state_dict(), "/data/model.pt", _use_new_zipfile_serialization=False)
