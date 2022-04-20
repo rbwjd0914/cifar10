@@ -55,15 +55,10 @@ if __name__ == "__main__":
 
     classes = ('plane', 'car', 'bird', 'cat',
                'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
-    print('start net')
     net = Net()
-    print('finish net')
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=args.momentum)
-    print('lr=%f, momentum=%f, epochs=%d' % (args.lr, args.momentum, args.epochs))
-    print('start training')
     for epoch in range(args.epochs):  # loop over the dataset multiple times
-        print('epoch %d' % (epoch))
         running_loss = 0.0
         for i, data in enumerate(trainloader, 0):
             # get the inputs; data is a list of [inputs, labels]
@@ -80,10 +75,8 @@ if __name__ == "__main__":
 
             # print statistics
             running_loss += loss.item()
-            if i % 2000 == 1999:    # print every 2000 mini-batches
-                print('[%d, %5d] loss: %.3f' %
-                      (epoch + 1, i + 1, running_loss / 2000))
-                running_loss = 0.0
+            
+        print('epoch %d:\nloss=%.3f' % (epoch + 1, running_loss / len(trainloader)))
 
     print('Finished Training')
 
