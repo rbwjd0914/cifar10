@@ -5,7 +5,4 @@ COPY . /home/jovyan
 
 WORKDIR /home/jovyan
 
-RUN chgrp -R 0 /home/jovyan \
-  && chmod -R g+rwX /home/jovyan
-
 ENTRYPOINT ["python", "/home/jovyan/cifar10.py"]
