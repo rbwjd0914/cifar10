@@ -76,7 +76,8 @@ if __name__ == "__main__":
             # print statistics
             running_loss += loss.item()
             
-        print('epoch %d:\nloss=%.3f\n' % (epoch + 1, running_loss / len(trainloader)))
+        print("Epoch {}".format(epoch+1))
+        print("loss={:.4f}".format(running_loss / len(trainloader)))
 
     print('Finished Training')
 
