@@ -1,3 +1,4 @@
+import argparse 
 import torch
 import torchvision
 import torchvision.transforms as transforms
@@ -27,6 +28,16 @@ class Net(nn.Module):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Pytorch Cifar10 Example")
+    parser.add_argument("--epochs", type=int, default=10, metavar="N",
+                        help="number of epochs to train (default: 2)")
+    parser.add_argument("--lr", type=float, default=0.01, metavar="LR",
+                        help="learning rate (default: 0.01)")
+    parser.add_argument("--momentum", type=float, default=0.9, metavar="M",
+                        help="SGD momentum (default: 0.9)")
+    parser.add_argument("--savepath", type=str, default="model.pt",
+                        help="Path to save model.")
+    args = parser.parse_args()
 
     transform = transforms.Compose(
         [transforms.ToTensor(),
@@ -48,9 +59,9 @@ if __name__ == "__main__":
     net = Net()
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-    
-    for epoch in range(2):  # loop over the dataset multiple times
+    optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=args.momentum)
+
+    for epoch in range(args.epochs):  # loop over the dataset multiple times
 
         running_loss = 0.0
         for i, data in enumerate(trainloader, 0):
@@ -76,4 +87,4 @@ if __name__ == "__main__":
     print('Finished Training')
 
     # Save model
-    torch.save(net.state_dict(), "/data/model.pt", _use_new_zipfile_serialization=False)
+    torch.save(net.state_dict(), args.savepath, _use_new_zipfile_serialization=False)
