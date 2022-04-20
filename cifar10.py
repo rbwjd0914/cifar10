@@ -29,7 +29,7 @@ class Net(nn.Module):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pytorch Cifar10 Example")
-    parser.add_argument("--epochs", type=int, default=10, metavar="N",
+    parser.add_argument("--epochs", type=int, default=2, metavar="N",
                         help="number of epochs to train (default: 2)")
     parser.add_argument("--lr", type=float, default=0.01, metavar="LR",
                         help="learning rate (default: 0.01)")
