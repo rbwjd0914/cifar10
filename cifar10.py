@@ -60,10 +60,9 @@ if __name__ == "__main__":
     print('finish net')
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=args.momentum)
-    epochs=args.epochs
-    print('lr=$f, momentum=%f, epochs=%d' % (lr, momentum, epochs))
+    print('lr=%f, momentum=%f, epochs=%d' % (args.lr, args.momentum, args.epochs))
     print('start training')
-    for epoch in range(epochs):  # loop over the dataset multiple times
+    for epoch in range(args.epochs):  # loop over the dataset multiple times
         print('epoch %d' % (epoch))
         running_loss = 0.0
         for i, data in enumerate(trainloader, 0):
