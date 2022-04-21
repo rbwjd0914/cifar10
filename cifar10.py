@@ -1,4 +1,6 @@
 import argparse 
+import logging
+
 import torch
 import torchvision
 import torchvision.transforms as transforms
@@ -38,6 +40,9 @@ if __name__ == "__main__":
     parser.add_argument("--savepath", type=str, default="model.pt",
                         help="Path to save model.")
     args = parser.parse_args()
+    
+    #logging
+    logging.basicConfig(format="%(asctime)s %(levelname)-8s %(message)s", datefmt="%Y-%m-%dT%H:%M:%SZ", level=logging.DEBUG)
 
     transform = transforms.Compose(
         [transforms.ToTensor(),
@@ -76,8 +81,9 @@ if __name__ == "__main__":
             # print statistics
             running_loss += loss.item()
             
-        print("Epoch {}".format(epoch+1))
-        print("loss={:.4f}".format(running_loss / len(trainloader)))
+        msg = "Train Epoch: {} \tloss={:.4f}".format(
+                epoch, running_loss / len(trainloader))
+        logging.info(msg)
 
     print('Finished Training')
 
