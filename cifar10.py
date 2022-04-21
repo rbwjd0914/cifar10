@@ -81,10 +81,13 @@ if __name__ == "__main__":
             # print statistics
             running_loss += loss.item()
             
-        msg = "Train Epoch: {} \tloss={:.4f}".format(
-                epoch, running_loss / len(trainloader))
-        logging.info(msg)
-        logging.info("{{metricName: loss, metricValue: {:.4f}}}\n".format(running_loss / len(trainloader)))
+        epoch_per_loss = running_loss / len(trainloader)
+        str1 = "epoch " + str(epoch) + ":"
+        str2 = "loss=" + str(epoch_per_loss)
+        str3 = "{metricName: loss, metricValue: " + str(epoch_per_loss) + "}\n"
+        logging.info(str1)
+        logging.info(str2)
+        logging.info(str3)
 
     print('Finished Training')
 
