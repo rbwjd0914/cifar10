@@ -84,6 +84,7 @@ if __name__ == "__main__":
         msg = "Train Epoch: {} \tloss={:.4f}".format(
                 epoch, running_loss / len(trainloader))
         logging.info(msg)
+        logging.info("{{metricName: loss, metricValue: {:.4f}}}\n".format(running_loss / len(trainloader)))
 
     print('Finished Training')
 
