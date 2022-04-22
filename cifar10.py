@@ -86,7 +86,5 @@ if __name__ == "__main__":
         print("Validation-loss=" + str(epoch_per_loss))
         print("loss=" + str(epoch_per_loss))
 
-    print('Finished Training')
-
     # Save model
     torch.save(net.state_dict(), args.savepath, _use_new_zipfile_serialization=False)
