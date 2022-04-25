@@ -37,8 +37,6 @@ if __name__ == "__main__":
                         help="learning rate (default: 0.01)")
     parser.add_argument("--momentum", type=float, default=0.9, metavar="M",
                         help="SGD momentum (default: 0.9)")
-    parser.add_argument("--savepath", type=str, default="model.pt",
-                        help="Path to save model.")
     args = parser.parse_args()
     
     #logging
@@ -87,4 +85,4 @@ if __name__ == "__main__":
         print("loss=" + str(epoch_per_loss))
 
     # Save model
-    torch.save(net.state_dict(), args.savepath, _use_new_zipfile_serialization=False)
+    torch.save(net.state_dict(), "model.pt", _use_new_zipfile_serialization=False)
