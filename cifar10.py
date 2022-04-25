@@ -85,4 +85,4 @@ if __name__ == "__main__":
         print("loss=" + str(epoch_per_loss))
 
     # Save model
-    torch.save(net.state_dict(), "model.pt", _use_new_zipfile_serialization=False)
+    # torch.save(net.state_dict(), "/data/model.pt", _use_new_zipfile_serialization=False)
